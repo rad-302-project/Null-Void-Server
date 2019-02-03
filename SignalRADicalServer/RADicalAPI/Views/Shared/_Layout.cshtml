@@ -16,26 +16,59 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("RADical Launcher", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
                     <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
+                    @*Newly-added links.*@
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Login", "Login", "Home", new { area = "" }, null)</li>
+                        <li>@Html.ActionLink("Register", "Registration", "Home", new { area = "" }, null)</li>// Must add a logout button later.
+                    }
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li> @Html.ActionLink(User.Identity.Name + "'s Launcher", "Launcher", "Home", new { area = "" }, null) </li>
+                    }
                 </ul>
             </div>
+            @*The script for this button does not work yet.*@
+            @if (User.Identity.IsAuthenticated)
+            {
+                <input id="btnLogoff" class="btn btn-success pull-right"
+                       type="button" value="Log Off" />
+            }
         </div>
     </div>
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - RADical Space Shooter</p>
         </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    @*http://csharp-video-tutorials.blogspot.com/2016/12/aspnet-web-api-logout.html used for reference.*@
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+        // Not functioning as intended. This does not log the user out.
+        $('#btnLogoff').click(function () {
+            sessionStorage.removeItem('accessToken');
+            //localStorage.removeItem('accessToken');
+            window.location.href = "@Url.Action("Index")";
+            });
+
+        })
+    </script>
 </body>
 </html>

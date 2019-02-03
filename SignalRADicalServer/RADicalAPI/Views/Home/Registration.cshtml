@@ -1,0 +1,135 @@
+﻿@{
+    ViewBag.Title = "Registration";
+}
+
+<!DOCTYPE html>
+@*http://csharp-video-tutorials.blogspot.com/2016/11/aspnet-web-api-user-registration.html Used for reference.*@
+<html>
+<head>
+    <title>Player Registration</title>
+    <meta charset="utf-8" />
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<body style="padding-top:60px">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="well">
+            @*This table's fields are what we'll keep track of to create the new player account.*@
+            <table class="table table-bordered">
+                <thead>
+                    <tr style="background-color:cadetblue; color:white">
+                        <th colspan="2">
+                            Player Registration
+                            <a href="Login.cshtml" class="btn btn-success pull-right">Login</a>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Email</td>
+                        <td><input type="text" id="txtEmail" placeholder="Email" /> </td>
+                    </tr>
+                    <tr>
+                        <td>Username</td>
+                        <td><input type="text" id="txtUsername" placeholder="Username" /> </td>
+                    </tr>
+                    <tr>
+                        <td>Password</td>
+                        <td>
+                            <input type="password" id="txtPassword"
+                                   placeholder="Password" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Confirm Password</td>
+                        <td>
+                            <input type="password" id="txtConfirmPassword"
+                                   placeholder="Confirm Password" />
+                        </td>
+                    </tr>
+                    <tr style="background-color:cadetblue; color:white">
+                        <td colspan="2">
+                            <input id="btnRegister" class="btn btn-success"
+                                   type="button" value="Register" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!--This modal dialogue box will appear if registration is successful-->
+            <div class="modal fade" tabindex="-1" id="successModal"
+                 data-keyboard="false" data-backdrop="static">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            @*This close button will send the player back to the front page.*@
+                            <button type="button" class="close" data-dismiss="modal"
+                                    onclick="window.location.href='@Url.Action("Index")'">
+                                &times;
+                            </button>
+                            <h4 class="modal-title">Success</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <h2 class="modal-title">Registration Successful! Welcome to the world of RADical Space Shooter!</h2>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            @*The confirm button will also send the player back to the front page.*@
+                            <button type="button" class="btn btn-success"
+                                    data-dismiss="modal" onclick="window.location.href='@Url.Action("Index")'">
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--This section will display any validation errors that occur.-->
+            <div id="divError" class="alert alert-danger collapse">
+                <a id="linkClose" href="#" class="close">&times;</a>
+                <div id="divErrorText"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+
+    @*http://csharp-video-tutorials.blogspot.com/2016/11/aspnet-web-api-user-registration.html Example script seen here.*@
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            // Close the bootstrap alert
+            $('#linkClose').click(function () {
+                $('#divError').hide('fade');
+            });
+
+            // Save the new player details
+            $('#btnRegister').click(function () {
+                $.ajax({
+                    url: '/api/Account/Register',
+                    method: 'POST',
+                    data: {
+                        email: $('#txtEmail').val(),
+                        username: $('#txtUsername').val(),
+                        password: $('#txtPassword').val(),
+                        confirmPassword: $('#txtConfirmPassword').val()
+                    },
+
+                    // Display the success dialog box.
+                    success: function () {
+                        $('#successModal').modal('show');
+                    },
+
+                    // Display the failure dialog box.
+                    error: function (jqXHR) {
+                        $('#divErrorText').text(jqXHR.responseText);
+                        $('#divError').show('fade');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

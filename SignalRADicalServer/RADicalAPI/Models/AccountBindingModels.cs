@@ -34,6 +34,11 @@ namespace RADicalAPI.Models
 
     public class RegisterBindingModel
     {
+        // New username property added.
+        [Required]
+        [Display(Name = "Username")]
+        public string Username { get; set; }
+
         [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
@@ -52,6 +57,11 @@ namespace RADicalAPI.Models
 
     public class RegisterExternalBindingModel
     {
+        // New username property added.
+        [Required]
+        [Display(Name = "Username")]
+        public string Username { get; set; }
+
         [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }

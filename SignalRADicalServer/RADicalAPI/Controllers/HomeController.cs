@@ -14,5 +14,27 @@ namespace RADicalAPI.Controllers
 
             return View();
         }
+
+        // Newly-added actions.
+        public ActionResult Registration()
+        {
+            ViewBag.Title = "Player Registration";
+
+            return View();
+        }
+
+        public ActionResult Login()
+        {
+            ViewBag.Title = "Login";
+
+            return View();
+        }
+
+        public ActionResult Launcher()
+        {
+            ViewBag.Title = "Launcher";
+
+            return View();
+        }
     }
 }
