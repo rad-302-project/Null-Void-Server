@@ -18,7 +18,7 @@ public class MainMenuController : MonoBehaviour
 
 	void Start () {
         phase = menuState.MAIN;
-        //FindObjectOfType<AudioManager>().Play("Turkish March"); // Play the main menu BGM.
+        FindObjectOfType<AudioManager>().Play("Main Menu"); // Play the main menu BGM.
     }
 
     public void OpenQuitDialog() {
@@ -33,8 +33,10 @@ public class MainMenuController : MonoBehaviour
     public void StartGame() {
         if (phase == menuState.MAIN)
         {
-            PlayUISound("Confirm");
+            FindObjectOfType<AudioManager>().Stop("Main Menu"); // Stop the main menu BGM.
+            PlayUISound("Confirm");            
             SceneManager.LoadScene("sc_gameplay");
+            FindObjectOfType<AudioManager>().Play("Gameplay"); // Play the gameplay BGM.
         }
         else PlayUISound("Decline");
     }    

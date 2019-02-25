@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: f09ddd028f50c9746a5e6535cf8532f2, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -894,7 +894,7 @@ Prefab:
     - target: {fileID: 114641668428728204, guid: 5d5c9136f415276499607004a5aeb942,
         type: 2}
       propertyPath: sounds.Array.size
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4119630691220146, guid: 5d5c9136f415276499607004a5aeb942, type: 2}
       propertyPath: m_LocalPosition.x
@@ -971,17 +971,17 @@ Prefab:
     - target: {fileID: 114641668428728204, guid: 5d5c9136f415276499607004a5aeb942,
         type: 2}
       propertyPath: sounds.Array.data[4].name
-      value: Polovtsian Dances
+      value: Main Menu
       objectReference: {fileID: 0}
     - target: {fileID: 114641668428728204, guid: 5d5c9136f415276499607004a5aeb942,
         type: 2}
       propertyPath: sounds.Array.data[4].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 25d7b0bf64846b94ea5e0a5929876f7c, type: 3}
+      objectReference: {fileID: 8300000, guid: fb686915026c5e840b59a7a82377510f, type: 3}
     - target: {fileID: 114641668428728204, guid: 5d5c9136f415276499607004a5aeb942,
         type: 2}
       propertyPath: sounds.Array.data[4].volume
-      value: 0.19
+      value: 0.724
       objectReference: {fileID: 0}
     - target: {fileID: 114641668428728204, guid: 5d5c9136f415276499607004a5aeb942,
         type: 2}
@@ -1011,17 +1011,17 @@ Prefab:
     - target: {fileID: 114641668428728204, guid: 5d5c9136f415276499607004a5aeb942,
         type: 2}
       propertyPath: sounds.Array.data[5].name
-      value: Collect
+      value: Gameplay
       objectReference: {fileID: 0}
     - target: {fileID: 114641668428728204, guid: 5d5c9136f415276499607004a5aeb942,
         type: 2}
       propertyPath: sounds.Array.data[5].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 9f50e3cb26511484daa549cc710419a3, type: 3}
+      objectReference: {fileID: 8300000, guid: abc34ae6b2838d84eb61707f33d91e6a, type: 3}
     - target: {fileID: 114641668428728204, guid: 5d5c9136f415276499607004a5aeb942,
         type: 2}
       propertyPath: sounds.Array.data[5].volume
-      value: 0.19
+      value: 0.724
       objectReference: {fileID: 0}
     - target: {fileID: 114641668428728204, guid: 5d5c9136f415276499607004a5aeb942,
         type: 2}
@@ -1031,7 +1031,7 @@ Prefab:
     - target: {fileID: 114641668428728204, guid: 5d5c9136f415276499607004a5aeb942,
         type: 2}
       propertyPath: sounds.Array.data[5].loop
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114641668428728204, guid: 5d5c9136f415276499607004a5aeb942,
         type: 2}
@@ -1167,7 +1167,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1774587719}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
