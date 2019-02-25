@@ -277,6 +277,12 @@
     <Reference Include="UnityEngine.StandardEvents">
       <HintPath>C:/Users/Jack/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>C:/Users/Jack/Documents/GitHub/RADical-Space-Shooter/RADical Space Shooter 302/Assets/Assemblies/Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Client">
+      <HintPath>C:/Users/Jack/Documents/GitHub/RADical-Space-Shooter/RADical Space Shooter 302/Assets/Assemblies/Microsoft.AspNet.SignalR.Client.dll</HintPath>
+    </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity 2018.1.6f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
     </Reference>
