@@ -6,9 +6,9 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    public int moveSpeed;
+    public int moveSpeed, rotateSpeed;
     public Text overallScoreDisplay;
-    public Transform respawnLocation;
+    public Transform respawnLocation, playerPosition;
 
     Rigidbody2D playerBody;
     //Animator animator;
@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playerBody = GetComponent<Rigidbody2D>();
+        playerPosition = GetComponent<Transform>();
         //animator = GetComponent<Animator>();
     }
 
@@ -27,23 +28,22 @@ public class PlayerController : MonoBehaviour
 
     void HandleMovement()
     {
-
         // Forward
         if (Input.GetKey(KeyCode.W))
         {
-            // Vector3.Forward is what we'll use here.
+            transform.position += transform.right * moveSpeed * Time.deltaTime * 60;
         }
 
         // Rotate Left
         if (Input.GetKey(KeyCode.A))
         {
-
+            transform.Rotate(0, -moveSpeed * Time.deltaTime * rotateSpeed, 0);
         }
 
         // Rotate Right
         else if (Input.GetKey(KeyCode.D))
         {
-
+            transform.Rotate(0, moveSpeed * Time.deltaTime * rotateSpeed, 0);
         }
     }
 
