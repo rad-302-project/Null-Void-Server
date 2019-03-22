@@ -8,11 +8,11 @@ public class FollowingCamera : MonoBehaviour {
 
     private Vector3 offset;
 
-	void Start () {
-        offset = transform.position - followee.transform.position;
-	}
+	//void Start () {
+ //       offset = transform.position - follow.transform.position;
+	//}
 		
-	void LateUpdate () {
-        transform.position = followee.transform.position + offset;
-	}
+	//void LateUpdate () {
+ //       transform.position = followee.transform.position + offset;
+	//}
 }
