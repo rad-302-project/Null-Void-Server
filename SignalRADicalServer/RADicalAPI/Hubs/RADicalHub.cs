@@ -15,6 +15,14 @@ namespace RADicalAPI.Hubs
         ApplicationDbContext appUserContext = new ApplicationDbContext();
         ApplicationUser _player1, _player2, _winningPlayer, _losingPlayer;
 
+        public void RegisterNewPlayer(string emailIn, string usernameIn, string pwordIn)
+        {
+            foreach(ApplicationUser player in appUserContext.Users)
+            {
+                if (player.Email == emailIn) Clients.Caller.ReceiveEmailError(emailIn); // Send an error back to the caller, since that email already has an account attached.                        
+            }
+        }
+
         // For now, this method assumes that this is a strictly two-player game.       
         public void UploadMatchResults(string p1Username, string p2Username, int p1Health, int p2Health)
         {
