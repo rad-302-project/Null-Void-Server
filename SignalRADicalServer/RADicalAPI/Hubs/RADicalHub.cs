@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNet.SignalR;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.SignalR;
 using Microsoft.AspNet.SignalR.Hubs;
 using RADicalAPI.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
 
@@ -17,9 +19,37 @@ namespace RADicalAPI.Hubs
 
         public void RegisterNewPlayer(string emailIn, string usernameIn, string pwordIn)
         {
-            foreach(ApplicationUser player in appUserContext.Users)
+            bool issueFound = false;
+            PasswordHasher ps = new PasswordHasher();
+
+            foreach (ApplicationUser player in appUserContext.Users)
             {
-                if (player.Email == emailIn) Clients.Caller.ReceiveEmailError(emailIn); // Send an error back to the caller, since that email already has an account attached.                        
+                if (player.Email == emailIn)
+                {
+                    Clients.Caller.ReceiveRegistrationMessage("Email Taken", emailIn); // Send an error back to the caller, since that email already has an account attached. 
+                    issueFound = true;
+                    break;
+                }
+                else if (player.UserName == usernameIn)
+                {
+                    Clients.Caller.ReceiveRegistrationMessage("Username Taken", usernameIn); // Send a similar error if the username's already been taken.
+                    issueFound = true;
+                    break;
+                }
+            }
+
+            if (!issueFound)
+            {
+                appUserContext.Users.Add(
+                 new ApplicationUser
+                 {
+                     Email = emailIn,
+                     UserName = usernameIn,
+                     PasswordHash = ps.HashPassword(pwordIn)
+                 }
+                 );
+                appUserContext.SaveChanges();
+                Clients.Caller.ReceiveRegistrationMessage("Success", usernameIn);
             }
         }
 
