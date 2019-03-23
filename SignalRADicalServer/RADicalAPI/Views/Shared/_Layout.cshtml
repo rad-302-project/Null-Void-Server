@@ -23,7 +23,7 @@
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
                     <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
                     @*Newly-added links.*@
-                    @if (!User.Identity.IsAuthenticated)
+                    @if (!User.Identity.IsAuthenticated) // Must find a way to set this back to "false" once the "logout" button is clicked.
                     {
                         <li>@Html.ActionLink("Login", "Login", "Home", new { area = "" }, null)</li>
                         <li>@Html.ActionLink("Register", "Registration", "Home", new { area = "" }, null)</li>// Must add a logout button later.
@@ -63,7 +63,7 @@
 
         // Not functioning as intended. This does not log the user out.
         $('#btnLogoff').click(function () {
-            sessionStorage.removeItem('accessToken');
+            sessionStorage.removeItem('accessToken'); // Got to find a way to set the readonly bool "IsAuthenticated" to false here. We'll need to investigate.
             //localStorage.removeItem('accessToken');
             window.location.href = "@Url.Action("Index")";
             });

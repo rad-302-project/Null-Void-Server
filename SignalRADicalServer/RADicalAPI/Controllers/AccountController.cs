@@ -68,7 +68,7 @@ namespace RADicalAPI.Controllers
 
         // POST api/Account/Logout
         [Route("Logout")]
-        public IHttpActionResult Logout()
+        public IHttpActionResult Logout() // This logout action result bears further investigation.
         {
             Authentication.SignOut(CookieAuthenticationDefaults.AuthenticationType);
             return Ok();
