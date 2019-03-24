@@ -17,10 +17,11 @@ namespace RADicalAPI.Hubs
         ApplicationDbContext appUserContext = new ApplicationDbContext();
         ApplicationUser _player1, _player2, _winningPlayer, _losingPlayer;
 
+        PasswordHasher ps = new PasswordHasher();
+
         public void RegisterNewPlayer(string emailIn, string usernameIn, string pwordIn)
         {
-            bool issueFound = false;
-            PasswordHasher ps = new PasswordHasher();
+            bool issueFound = false;            
 
             foreach (ApplicationUser player in appUserContext.Users)
             {
@@ -51,6 +52,23 @@ namespace RADicalAPI.Hubs
                 appUserContext.SaveChanges();
                 Clients.Caller.ReceiveRegistrationMessage("Success", usernameIn);
             }
+        }
+
+        public void PlayerLogin(string usernameIn, string pwordIn)
+        {          
+            ApplicationUser player = appUserContext.Users.Where(u => u.UserName == usernameIn).FirstOrDefault();
+
+            if(player != null)
+            {
+                var result = ps.VerifyHashedPassword(player.PasswordHash, pwordIn);
+                if (Convert.ToBoolean(result) == true)
+                {
+                    Clients.Caller.ReceiveLoginMessage("Password Valid", player.UserName, player.Wins, player.Losses);
+                }
+                else Clients.Caller.ReceiveLoginMessage("Password Invalid", player.UserName, player.Wins, player.Losses);
+            }
+
+            else Clients.Caller.ReceiveLoginMessage("Not Found", "", 0, 0);
         }
 
         // For now, this method assumes that this is a strictly two-player game.       
