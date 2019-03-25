@@ -24,7 +24,7 @@ namespace RADicalAPI.Migrations
                {
                    UserName = "TestPlayer1",
                    Email = "testp1@mail.itsligo.ie",
-                   PasswordHash = ps.HashPassword("Pau-Pau93")
+                   PasswordHash = ps.HashPassword("City-Hunter93")
                },
 
                 new ApplicationUser
