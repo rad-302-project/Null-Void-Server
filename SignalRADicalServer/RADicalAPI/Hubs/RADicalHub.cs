@@ -71,28 +71,22 @@ namespace RADicalAPI.Hubs
             else Clients.Caller.ReceiveLoginMessage("Not Found", usernameIn, 0, 0);
         }
 
-        // For now, this method assumes that this is a strictly two-player game.       
-        public void UploadMatchResults(string p1Username, string p2Username, int p1Health, int p2Health)
+         
+        public void UploadHighScore(string p1Username, int newHighScore)
         {
-            // Find the two players who had participated.
+            // Find the player.
             _player1 = DatabaseHelper.FindPlayer(p1Username);
-            _player2 = DatabaseHelper.FindPlayer(p2Username);
 
             // If we've found both of them in the database...
-            if (_player1 != null && _player2 != null)
+            if (_player1 != null)
             {
-                DeterminePlayerStatus(p1Health, p2Health);
-
-                appUserContext.Users.FirstOrDefault(p => p.UserName == _winningPlayer.UserName).Wins++;
-                appUserContext.Users.FirstOrDefault(p => p.UserName == _losingPlayer.UserName).Losses++;
+                appUserContext.Users.FirstOrDefault(p => p.UserName == _player1.UserName).HighScore = newHighScore;
 
                 // Save the changes to the database.
                 appUserContext.SaveChanges();
 
-                // Send the results back to the game.  
-                Clients.All.ReceiveResults(
-                    appUserContext.Users.FirstOrDefault(p => p.UserName == _winningPlayer.UserName),
-                    appUserContext.Users.FirstOrDefault(p => p.UserName == _losingPlayer.UserName));
+                // Send a confirmation message back to the game.
+                Clients.Caller.ReceiveResults();
             }
         }
 
