@@ -276,6 +276,10 @@
     <Compile Include="Migrations\201902032140391_InitialMigration.Designer.cs">
       <DependentUpon>201902032140391_InitialMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903251248452_HighScoreAdded.cs" />
+    <Compile Include="Migrations\201903251248452_HighScoreAdded.Designer.cs">
+      <DependentUpon>201903251248452_HighScoreAdded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -387,6 +391,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201902032140391_InitialMigration.resx">
       <DependentUpon>201902032140391_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903251248452_HighScoreAdded.resx">
+      <DependentUpon>201903251248452_HighScoreAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

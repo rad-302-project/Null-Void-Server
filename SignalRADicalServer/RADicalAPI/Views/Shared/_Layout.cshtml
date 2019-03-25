@@ -30,6 +30,7 @@
                     }
                     @if (User.Identity.IsAuthenticated)
                     {
+                        @*<li>@Html.ActionLink("Active Players", "Index", "Players", new { area = "" }, null)</li>*@
                         <li> @Html.ActionLink(User.Identity.Name + "'s Launcher", "Launcher", "Home", new { area = "" }, null) </li>
                     }
                 </ul>

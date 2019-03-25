@@ -9,7 +9,8 @@ namespace RADicalAPI.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
-        #region Newly-added properties for a user/player.                    
+        #region Newly-added properties for a user/player.  
+        public int HighScore { get; set; }
         public int Wins { get; set; }
         public int Losses { get; set; }
 
@@ -36,5 +37,7 @@ namespace RADicalAPI.Models
         {
             return new ApplicationDbContext();
         }
+
+        //public System.Data.Entity.DbSet<RADicalAPI.Models.ApplicationUser> ApplicationUsers { get; set; }
     }
 }

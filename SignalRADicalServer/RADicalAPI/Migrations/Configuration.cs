@@ -24,6 +24,7 @@ namespace RADicalAPI.Migrations
                {
                    UserName = "TestPlayer1",
                    Email = "testp1@mail.itsligo.ie",
+                   SecurityStamp = Guid.NewGuid().ToString(),
                    PasswordHash = ps.HashPassword("City-Hunter93")
                },
 
@@ -31,6 +32,7 @@ namespace RADicalAPI.Migrations
                 {
                     UserName = "TestPlayer2",
                     Email = "testp2@mail.itsligo.ie",
+                    SecurityStamp = Guid.NewGuid().ToString(),
                     PasswordHash = ps.HashPassword("Jo-Jo85")
                 }
                );
