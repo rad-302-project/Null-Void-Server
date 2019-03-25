@@ -68,7 +68,7 @@ namespace RADicalAPI.Hubs
                 else Clients.Caller.ReceiveLoginMessage("Password Invalid", player.UserName, player.Wins, player.Losses);
             }
 
-            else Clients.Caller.ReceiveLoginMessage("Not Found", "", 0, 0);
+            else Clients.Caller.ReceiveLoginMessage("Not Found", usernameIn, 0, 0);
         }
 
         // For now, this method assumes that this is a strictly two-player game.       
