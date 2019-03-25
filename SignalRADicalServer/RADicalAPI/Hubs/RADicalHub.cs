@@ -54,24 +54,25 @@ namespace RADicalAPI.Hubs
             }
         }
 
+
         public void PlayerLogin(string usernameIn, string pwordIn)
-        {          
+        {
             ApplicationUser player = appUserContext.Users.Where(u => u.UserName == usernameIn).FirstOrDefault();
 
-            if(player != null)
+            if (player != null)
             {
                 var result = ps.VerifyHashedPassword(player.PasswordHash, pwordIn);
                 if (Convert.ToBoolean(result) == true)
                 {
-                    Clients.Caller.ReceiveLoginMessage("Password Valid", player.UserName, player.Wins, player.Losses);
+                    Clients.Caller.ReceiveLoginMessage("Password Valid", player.UserName, player.HighScore);
                 }
-                else Clients.Caller.ReceiveLoginMessage("Password Invalid", player.UserName, player.Wins, player.Losses);
+                else Clients.Caller.ReceiveLoginMessage("Password Invalid", player.UserName, player.HighScore);
             }
 
-            else Clients.Caller.ReceiveLoginMessage("Not Found", usernameIn, 0, 0);
+            else Clients.Caller.ReceiveLoginMessage("Not Found", usernameIn, 0);
         }
 
-         
+
         public void UploadHighScore(string p1Username, int newHighScore)
         {
             // Find the player.
