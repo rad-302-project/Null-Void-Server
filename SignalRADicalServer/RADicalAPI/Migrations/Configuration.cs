@@ -25,7 +25,8 @@ namespace RADicalAPI.Migrations
                    UserName = "TestPlayer1",
                    Email = "testp1@mail.itsligo.ie",
                    SecurityStamp = Guid.NewGuid().ToString(),
-                   PasswordHash = ps.HashPassword("City-Hunter93")
+                   PasswordHash = ps.HashPassword("City-Hunter93"),
+                   HighScore = 12
                },
 
                 new ApplicationUser
@@ -33,7 +34,8 @@ namespace RADicalAPI.Migrations
                     UserName = "TestPlayer2",
                     Email = "testp2@mail.itsligo.ie",
                     SecurityStamp = Guid.NewGuid().ToString(),
-                    PasswordHash = ps.HashPassword("Jo-Jo85")
+                    PasswordHash = ps.HashPassword("Jo-Jo85"),
+                    HighScore = 15
                 }
                );
             context.SaveChanges();

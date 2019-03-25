@@ -36,8 +36,6 @@ namespace RADicalAPI.Models
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
-        }
-
-        //public System.Data.Entity.DbSet<RADicalAPI.Models.ApplicationUser> ApplicationUsers { get; set; }
+        }              
     }
 }
