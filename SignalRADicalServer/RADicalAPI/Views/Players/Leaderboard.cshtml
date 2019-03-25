@@ -1,0 +1,30 @@
+﻿@model IEnumerable<RADicalAPI.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "Leaderboard";
+}
+
+<h2 style="padding-top:2em;">NULL:VOID Leaderboard</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HighScore)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HighScore)
+            </td>                
+        </tr>
+    }
+</table>
