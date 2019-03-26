@@ -18,6 +18,9 @@ namespace RADicalAPI.Migrations
         {
             PasswordHasher ps = new PasswordHasher();
 
+            // NOTE: Currently, we cannot sign in as these test players on the Azure hosted version of this web app.
+            // Registering as a new user and logging in as that user (or any other created user) will work however.
+
             // Here we'll seed two sample players for our game.
             context.Users.AddOrUpdate(u => u.UserName,
                new ApplicationUser

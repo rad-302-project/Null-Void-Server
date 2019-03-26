@@ -13,7 +13,7 @@ using RADicalAPI.Models;
 
 namespace RADicalAPI.Controllers
 {
-    [System.Web.Mvc.Authorize] // This line ensures that only logged in players can view the leaderboard.
+    //[System.Web.Mvc.Authorize] // This line ensures that only logged in players can view the leaderboard.
     public class PlayersController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

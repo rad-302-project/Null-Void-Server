@@ -37,7 +37,8 @@
             </div>
             @*The script for this button does not work yet.*@
             @if (User.Identity.IsAuthenticated)
-            {
+                    {
+                //Unfortunately, we still cannot log out, the only way is to close your browser session, this is also the case for the Azure-hosted version.
                 <input id="btnLogoff" class="btn btn-success pull-right"
                        type="button" value="Log Off" />
             }

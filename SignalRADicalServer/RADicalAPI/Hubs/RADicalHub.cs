@@ -15,7 +15,7 @@ namespace RADicalAPI.Hubs
     {
         // Create a reference to the application user database.
         ApplicationDbContext appUserContext = new ApplicationDbContext();
-        ApplicationUser _player1, _player2, _winningPlayer, _losingPlayer;
+        ApplicationUser _player1;
 
         PasswordHasher ps = new PasswordHasher();
 
@@ -54,7 +54,6 @@ namespace RADicalAPI.Hubs
             }
         }
 
-
         public void PlayerLogin(string usernameIn, string pwordIn)
         {
             ApplicationUser player = appUserContext.Users.Where(u => u.UserName == usernameIn).FirstOrDefault();
@@ -71,7 +70,6 @@ namespace RADicalAPI.Hubs
 
             else Clients.Caller.ReceiveLoginMessage("Not Found", usernameIn, 0);
         }
-
 
         public void UploadHighScore(string p1Username, int newHighScore)
         {
@@ -140,22 +138,6 @@ namespace RADicalAPI.Hubs
             {
                 Clients.Others.PlayerLeft(username);
             }
-        }
-
-        // This method will determine who won the match.        
-        private void DeterminePlayerStatus(int p1Health, int p2Health)
-        {
-            if (p1Health > p2Health)
-            {
-                _winningPlayer = _player1;
-                _losingPlayer = _player2;
-            }
-
-            else if (p2Health > p1Health)
-            {
-                _winningPlayer = _player2;
-                _losingPlayer = _player1;
-            }
-        }
+        }       
     }
 }
