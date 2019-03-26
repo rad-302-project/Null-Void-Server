@@ -46,6 +46,7 @@ namespace RADicalAPI.Hubs
                  {
                      Email = emailIn,
                      UserName = usernameIn,
+                     SecurityStamp = Guid.NewGuid().ToString(),
                      PasswordHash = ps.HashPassword(pwordIn)
                  }
                  );
